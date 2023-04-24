@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    struct node*pre;
+    int data;
+    struct node*next;
+};
+void pos(struct node*head){
+    struct node*new=malloc(sizeof(struct node));
+    new->data=12;
+    int pos;
+    printf("enter pos\n");
+    scanf("%d",&pos);
+struct node*ptr4=NULL;
+    struct node*ptr1;
+    ptr1=head;
+  for(int i=0;i<pos-1;i++){
+    printf("%d\n",ptr1->data);
+    ptr4=ptr1;
+    ptr1=ptr1->next;
+  }
+  new->next=ptr1;
+  new->pre=ptr4;
+  struct node*ptr2;
+  ptr2=new;
+  while(ptr2!=0){
+    printf("%d\n",ptr2->data);
+    ptr2=ptr2->next;
+  }
+}
+int main(){
+    struct node*head=malloc(sizeof(struct node));
+    head->pre=NULL;
+    head->data=87;
+    head->next=NULL;
+    struct node*p2=malloc(sizeof(struct node));
+    p2->pre= head;
+    p2->data=89;
+    p2->next=NULL;
+    head->next=p2;
+    struct node*p3=malloc(sizeof(struct node));
+    p3->pre=p2;
+    p3->data=23;
+    p3->next=NULL;
+    p2->next=p3;
+    struct node*p4=malloc(sizeof(struct node));
+    p4->pre=p3;
+    p4->data=56;
+    p4->next=NULL;
+    p3->next=p4;
+    pos(head);
+    return 0;
+}
